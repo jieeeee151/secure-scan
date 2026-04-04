@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h2>Your Scan History</h2>
+
+<table border="1" align="center">
+    <tr>
+        <th>Tool</th>
+        <th>Result</th>
+        <th>Time</th>
+    </tr>
+
+    {% for scan in scans %}
+    <tr>
+        <td>{{ scan.tool_type }}</td>
+        <td>{{ scan.result }}</td>
+        <td>{{ scan.created_at }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<a href="/download-history">
+    <button>Download Full History</button>
+</a>
+
+<br>
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

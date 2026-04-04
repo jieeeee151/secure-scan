@@ -1,0 +1,5 @@
+Flask
+Flask-MySQLdb
+gunicorn
+reportlab
+mysql-connector-python
