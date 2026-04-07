@@ -9,6 +9,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from flask import send_file
 from flask import send_from_directory
+from flask import request, send_from_directory
 import io
 import os
 
@@ -316,10 +317,11 @@ def vulnerability_scanner():
 # 404 ERROR (page not found)
 @app.errorhandler(404)
 def not_found(e):
+    # ✅ Allow static files to be served properly
     if request.path.startswith('/static/'):
-        return e   # allow static files to work
-    return render_template("error.html")
-
+        return send_from_directory(os.path.join(app.root_path, 'static'),
+                                   request.path.replace('/static/', ''))
+    return render_template("error.html"), 404
 
 # 500 ERROR (server error)
 @app.errorhandler(500)
