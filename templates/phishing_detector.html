@@ -1,90 +1,41 @@
 {% extends "base.html" %}
-
 {% block content %}
 
-<div class="checker-container">
-
-<!-- 🔙 BACK -->
 <div class="back-btn">
     <a href="/dashboard">← Back to Dashboard</a>
 </div>
 
-<!-- 🔥 TITLE -->
-<div class="title-line"></div>
-<h2 class="checker-title">PHISHING DETECTION TOOL</h2>
-<div class="title-line"></div>
+<div class="title-container">
+    <div class="title-line"></div>
+    <h2 class="checker-title">PHISHING DETECTION TOOL</h2>
+    <div class="title-line"></div>
+</div>
 
-<!-- 🌐 INPUT -->
+<div class="checker-container">
+
+```
 <form method="POST">
     <label class="input-label">Website URL:</label>
-    <input type="text" name="url" placeholder="Enter URL (e.g. https://example.com)" required>
+    <input type="text" name="url" placeholder="Enter URL" required>
 
     <button type="submit" class="main-btn">Scan</button>
 </form>
 
-{% if error %}
-    <p class="error-msg">{{ error }}</p>
-{% endif %}
-
-<!-- ✅ RESULT -->
 {% if result %}
 <div class="result-box">
-
-    <p><strong>Result:</strong> 
-        <span class="
-            {% if 'Safe' in result %}strong
-            {% elif 'Suspicious' in result %}medium
-            {% else %}weak{% endif %}
-        ">
-        {{ result }}
-        </span>
+    <p><strong>Result:</strong>
+        <span class="{{ color }}">{{ result }}</span>
     </p>
 
-    <!-- 📊 BAR -->
     <div class="bar">
-        <div class="bar-fill 
-            {% if 'Safe' in result %}strong-bar
-            {% elif 'Suspicious' in result %}medium-bar
-            {% else %}weak-bar{% endif %}
-        " style="
-            {% if 'Safe' in result %}width: 100%;
-            {% elif 'Suspicious' in result %}width: 60%;
-            {% else %}width: 30%;
-            {% endif %}
-        "></div>
+        <div class="bar-fill {{ color }}-bar" style="width: 60%"></div>
     </div>
 
-    <!-- 📄 DOWNLOAD -->
-    <button onclick="downloadReport()" class="download-btn">
-        Download Report
-    </button>
-
-    {% if why and not is_guest %}
-    <div class="why-box">
-        <h4>Why this matters</h4>
-        <p>{{ why }}</p>
-    </div>
-    {% endif %}
-
+    <button onclick="downloadReport()" class="download-btn">Download Report</button>
 </div>
 {% endif %}
-
+```
 
 </div>
-
-<!-- 🔧 SCRIPT -->
-
-<script>
-function downloadReport() {
-    const isGuest = {{ 'true' if is_guest else 'false' }};
-
-    if (isGuest) {
-        alert("Please login to download report");
-        window.location.href = "/login";
-    } else {
-        window.location.href = "/download-report?tool=Phishing Detector&input={{ last_input }}&result={{ result }}&why={{ why }}";
-    }
-}
-</script>
 
 {% endblock %}

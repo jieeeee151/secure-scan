@@ -332,10 +332,10 @@ body {
 
 /* PAGE CONTAINER */
 .checker-container {
-    width: 100%;
-    margin: 50px auto;
+    width: 500px;
+    margin-top: 20px;
+    margin: 30px auto;
     text-align: center;
-    background-color: transparent;
 }
 
 .history-container {
@@ -430,18 +430,20 @@ body {
 
 /* TITLE LINE */
 .title-line {
-    width: 90%;          /* longer */
-    height: 3px;         /* thicker (same top & bottom) */
+    width: 90%;
+    height: 3px;
     background: #2c3e50;
     margin: 10px auto;
 }
 
+.title-container {
+    width: 100%;
+    text-align: center;
+}
+
 /* BACK BUTTON */
 .back-btn {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    margin-bottom: 10px;
+    margin: 20px 0 0 60px;
 }
 
 .back-btn a {
