@@ -122,14 +122,9 @@ body {
 
 /* ACTIVITY */
 .activity-box {
-    margin-top: 30px;
-    background: white;
-    padding: 0 40px;
-    border-radius: 10px;
     width: 100%;
-    margin: 30px auto;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 60px;   /* same spacing as dashboard */
+    margin-top: 20px;
 }
 
 .activity-box h3 {
@@ -140,13 +135,14 @@ body {
 .modern-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    background: white;
 }
 
 .modern-table th {
     background: #f1f3f5;
     padding: 14px;
     text-align: center;
+    font-weight: bold;
 }
 
 .modern-table td {
@@ -535,11 +531,8 @@ body {
 
 .page-info {
     width: 100%;
-    max-width: 1200px;
-    padding: 0 40px;
+    padding: 0 60px;
+    margin: 20px 0 10px 0;   /* space from title */
     text-align: left;
-    margin-bottom: 10px;
-    margin: 0 auto 10px auto;
     font-size: 14px;
-    color: #2c3e50;
 }
