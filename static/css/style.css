@@ -98,8 +98,8 @@ body {
 }
 
 .tool-icon {
-    width: 100px;   /* increase from 60 → 90 */
-    height: 100px;
+    width: 250px;   /* increase from 60 → 90 */
+    height: 250px;
     object-fit: contain;
     margin-bottom: 15px;
 }
