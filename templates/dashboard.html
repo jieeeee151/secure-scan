@@ -1,81 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Secure Scan</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Welcome, {{ username }} 👤</h2>
+{% block content %}
+
+<h2 class="welcome">Welcome, {{ username }}</h2>
 
 {% if not is_guest %}
-    <p>Total Scans: {{ total_scans }} 📊</p>
+    <h3 class="total">Total Scans: {{ total_scans }}</h3>
 {% endif %}
 
-{% if is_guest %}
-    <p style="color: orange;">
-        You are using as Guest (limit: 5 scans, no history)
-    </p>
+<!-- 🔘 TOOL CARDS -->
+<div class="tool-container">
 
-    <a href="/login"><button>Login</button></a>
-    <a href="/register"><button>Register</button></a>
-{% endif %}
+    <!-- Password -->
+    <div class="tool-card">
+        <img src="{{ url_for('static', filename='images/password.png') }}" class="tool-icon">
 
-{% if not is_guest %}
-    <a href="/logout">Logout</a>
-{% endif %}
+        <h3>Password Checker</h3>
 
-<hr>
+        <p>Analyze password strength and detect weak or unsafe passwords.</p>
 
-<h3>Tools:</h3>
+        <a href="/password-checker">
+            <button class="tool-btn">Start</button>
+        </a>
+    </div>
 
-<ul>
-    <a href="/password-checker">Password Checker</a>
-    <br>
-    <a href="/phishing-detector">Phishing Detector</a>
-    <br>
-    <a href="/vulnerability-scanner">Vulnerability Scanner</a>
-</ul>
+    <!-- Phishing -->
+    <div class="tool-card">
+        <img src="{{ url_for('static', filename='images/phishing.png') }}" class="tool-icon">
 
-<br>
+        <h3>Phishing Detection</h3>
 
-<h3>Recent Activity:</h3>
+        <p>Identify suspicious or malicious links to avoid phishing attacks.</p>
 
-<table border="1" align="center">
-    <tr>
-        <th>Tool</th>
-        <th>Result</th>
-        <th>Time</th>
-    </tr>
+        <a href="/phishing-detector">
+            <button class="tool-btn">Start</button>
+        </a>
+    </div>
 
-    {% for scan in recent_scans %}
-    <tr>
-        <td>{{ scan.tool_type }}</td>
-        <td>{{ scan.result }}</td>
-        <td>{{ scan.created_at }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <!-- Vulnerability -->
+    <div class="tool-card">
+        <img src="{{ url_for('static', filename='images/vulnerability.png') }}" class="tool-icon">
 
-<br>
+        <h3>Vulnerability Scan</h3>
 
-<button onclick="goHistory()">View Full History</button>
+        <p>Scan websites for potential security vulnerabilities and risks.</p>
 
-<script>
-function goHistory() {
-    const isGuest = {{ 'true' if is_guest else 'false' }};
+        <a href="/vulnerability-scanner">
+            <button class="tool-btn">Start</button>
+        </a>
+    </div>
 
-    if (isGuest) {
-        let confirmLogin = confirm("Please login to view full history. Go to login page?");
+</div>
 
-        if (confirmLogin) {
-            window.location.href = "/login";
-        }
-    } else {
-        window.location.href = "/history";
-    }
-}
-</script>
+<!-- 📊 RECENT ACTIVITY -->
+<div class="activity-box">
+    <h3>Recent Scan Activity</h3>
 
-</body>
-</html>
+    <table class="modern-table">
+        <tr>
+            <th>Date/Time</th>
+            <th>Tool</th>
+            <th>Result</th>
+        </tr>
+
+        {% for scan in recent_scans %}
+        <tr>
+            <td>{{ scan.created_at }}</td>
+            <td>{{ scan.tool_type }}</td>
+            <td>{{ scan.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
