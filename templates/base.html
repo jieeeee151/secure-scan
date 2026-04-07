@@ -15,10 +15,22 @@
     <div class="nav-right">
         <a href="/history" class="nav-link">Scan History</a>
 
-        <div class="user-box">
-            👤 {{ username if username else 'Guest' }}
-        </div>
+        <!-- 👤 PROFILE DROPDOWN -->
+        <div class="profile-dropdown">
+            <div class="user-box">
+                👤 {{ username if username else 'Guest' }}
+            </div>
+
+            <div class="dropdown-menu">
+                {% if is_guest %}
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                {% else %}
+                    <a href="/logout">Logout</a>
+                {% endif %}
+            </div>
     </div>
+</div>
 </div>
 
 <div class="container">

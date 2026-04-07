@@ -60,6 +60,7 @@ def login():
         # ✅ check hash
         if user and check_password_hash(user['password'], password):
             session['user_id'] = user['id']
+            session['username'] = user['username']
             return redirect('/dashboard')
         else:
             return "Invalid login ❌"
@@ -110,6 +111,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
+    session.pop('username', None)
     return redirect('/?message=logged_out')
 
 
@@ -389,6 +391,13 @@ def download_history():
     buffer.seek(0)
 
     return send_file(buffer, as_attachment=True, download_name="history.pdf")
+
+@app.context_processor
+def inject_user():
+    return {
+        'is_guest': ('user_id' not in session),
+        'username': session.get('username', 'Guest')
+    }
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
