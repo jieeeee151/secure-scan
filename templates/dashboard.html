@@ -2,18 +2,12 @@
 
 {% block content %}
 
-<h2 class="welcome">Welcome, {{ username }}</h2>
-
-{% if not is_guest %}
-    <h3 class="total">Total Scans: {{ total_scans }}</h3>
-{% endif %}
-
-<!-- 🔘 TOOL CARDS -->
+<!-- TOOL CARDS -->
 <div class="tool-container">
 
     <!-- Password -->
     <div class="tool-card">
-        <img src="/static/images/password.png" class="tool-icon">
+        <img src="{{ url_for('static', filename='images/password.png') }}" class="tool-icon">
 
         <h3>Password Checker</h3>
 
@@ -52,7 +46,7 @@
 
 </div>
 
-<!-- 📊 RECENT ACTIVITY -->
+<!-- ACTIVITY -->
 <div class="activity-box">
     <h3>Recent Scan Activity</h3>
 
@@ -71,6 +65,26 @@
         </tr>
         {% endfor %}
     </table>
+
+    <br>
+
+    <button onclick="goHistory()">View Full History</button>
 </div>
+
+<script>
+function goHistory() {
+    const isGuest = {{ 'true' if is_guest else 'false' }};
+
+    if (isGuest) {
+        let confirmLogin = confirm("Please login to view full history. Go to login page?");
+
+        if (confirmLogin) {
+            window.location.href = "/login";
+        }
+    } else {
+        window.location.href = "/history";
+    }
+}
+</script>
 
 {% endblock %}

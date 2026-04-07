@@ -16,8 +16,7 @@ body {
 }
 
 .logo {
-    width: 40px;
-    margin-right: 10px;
+    width: 120px;
 }
 
 .brand {
@@ -80,7 +79,9 @@ body {
 }
 
 .tool-icon {
-    width: 60px;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
     margin-bottom: 15px;
 }
 

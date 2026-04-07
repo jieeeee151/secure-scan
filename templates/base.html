@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<!-- 🔝 NAVBAR -->
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-left">
         <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
@@ -15,11 +15,9 @@
     <div class="nav-right">
         <a href="/history" class="nav-link">Scan History</a>
 
-        {% if username %}
         <div class="user-box">
-            👤 {{ username }}
+            👤 {{ username if username else 'Guest' }}
         </div>
-        {% endif %}
     </div>
 </div>
 
