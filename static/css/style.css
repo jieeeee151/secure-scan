@@ -340,6 +340,11 @@ body {
     background-color: transparent;
 }
 
+.history-container {
+    width: 100%;
+    margin-top: 50px;
+}
+
 /* TITLE */
 .checker-title {
     margin-bottom: 20px;
@@ -532,7 +537,7 @@ body {
 .page-info {
     width: 100%;
     padding: 0 60px;
-    margin: 20px 0 10px 0;   /* space from title */
+    margin: 25px 0 5px 0;   /* more space from title, closer to table */
     text-align: left;
     font-size: 14px;
 }
