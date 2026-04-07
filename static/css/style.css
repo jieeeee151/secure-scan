@@ -245,12 +245,6 @@ body {
     font-family: Arial, sans-serif;
 } */
 
-.back-btn a {
-    text-decoration: none;
-    color: #2c3e50;
-    font-size: 14px;
-}
-
 /* logo */
 .login-logo {
     text-align: center;
@@ -443,13 +437,20 @@ body {
 
 /* BACK BUTTON */
 .back-btn {
-    margin: 20px 0 0 60px;
+    width: 100%;
+    text-align: left;   /* 🔥 force left */
+    margin-top: 15px;
+    padding-left: 60px; /* same spacing as header */
 }
 
 .back-btn a {
     text-decoration: none;
     color: #2c3e50;
     font-size: 14px;
+}
+
+.back-btn a:hover {
+    text-decoration: underline;
 }
 
 /* COLOR SYSTEM */
