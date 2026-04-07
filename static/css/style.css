@@ -76,11 +76,17 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
+    transition: 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .tool-icon {
-    width: 70px;
-    height: 70px;
+    width: 100px;   /* increase from 60 → 90 */
+    height: 100px;
     object-fit: contain;
     margin-bottom: 15px;
 }
@@ -151,6 +157,17 @@ body {
     display: inline-block;
 }
 
+/* make hover area bigger */
+.profile-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    height: 15px; /* invisible bridge */
+}
+
+/* user button */
 .user-box {
     background: #f1f3f5;
     padding: 8px 15px;
@@ -158,21 +175,33 @@ body {
     cursor: pointer;
 }
 
-/* hidden by default */
+/* dropdown */
 .dropdown-menu {
-    display: none;
     position: absolute;
     right: 0;
-    top: 45px;
+    top: 100%; /* attach directly */
+    margin-top: 5px; /* small gap */
     background: white;
     min-width: 140px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     border-radius: 8px;
     overflow: hidden;
     z-index: 1000;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: 0.2s ease;
 }
 
-/* dropdown items */
+/* show smoothly */
+.profile-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* items */
 .dropdown-menu a {
     display: block;
     padding: 10px;
@@ -182,9 +211,4 @@ body {
 
 .dropdown-menu a:hover {
     background: #f1f3f5;
-}
-
-/* SHOW ON HOVER */
-.profile-dropdown:hover .dropdown-menu {
-    display: block;
 }
