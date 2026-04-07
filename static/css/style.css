@@ -1,3 +1,16 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.login-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(to bottom, #e9eef3, #dfe6ec);
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -221,10 +234,10 @@ body {
 }
 
 /* LOGIN PAGE */
-.login-body {
+/* .login-body {
     background: linear-gradient(to bottom, #e9eef3, #dfe6ec);
     font-family: Arial, sans-serif;
-}
+} */
 
 /* back button */
 .back-btn {
@@ -265,6 +278,12 @@ body {
     margin-bottom: 5px;
 }
 
+.login-container input:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 5px rgba(74,108,247,0.3);
+}
+
 .subtitle {
     font-size: 14px;
     color: #777;
@@ -273,9 +292,10 @@ body {
 
 /* inputs */
 .login-container input {
-    width: 100%;
+    width: 85%;              /* smaller */
     padding: 12px;
-    margin: 10px 0;
+    margin: 10px auto;       /* center */
+    display: block;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 14px;
@@ -283,7 +303,7 @@ body {
 
 /* button */
 .login-btn {
-    width: 100%;
+    width: 85%;
     padding: 12px;
     background: linear-gradient(to right, #4a6cf7, #6a5af9);
     border: none;
@@ -292,6 +312,8 @@ body {
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
+    margin: 15px auto;
+    display: block;
 }
 
 .login-btn:hover {
