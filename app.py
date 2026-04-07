@@ -11,7 +11,7 @@ from flask import send_file
 import io
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = "secret123"
 
 # HOME
