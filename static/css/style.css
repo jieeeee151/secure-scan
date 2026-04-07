@@ -332,7 +332,7 @@ body {
 
 /* PAGE CONTAINER */
 .checker-container {
-    width: 500px;
+    width: 100%;
     margin: 50px auto;
     text-align: center;
     background-color: transparent;
@@ -438,9 +438,9 @@ body {
 
 /* BACK BUTTON */
 .back-btn {
-    text-align: left;
-    margin-top: 70px;   /* increase this */
-    margin-left: 60px;
+    position: absolute;
+    top: 20px;
+    left: 30px;
     margin-bottom: 10px;
 }
 
