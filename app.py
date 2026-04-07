@@ -190,12 +190,13 @@ def password_checker():
 # HISTORY
 @app.route('/history')
 def history():
+    # 🔒 check login
     if 'user_id' not in session:
         return redirect('/login')
 
     user_id = session['user_id']
 
-    # ✅ GET PAGE NUMBER
+    # 📄 pagination setup
     page = request.args.get('page', 1, type=int)
     per_page = 15
     offset = (page - 1) * per_page
@@ -203,26 +204,43 @@ def history():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
-    # ✅ TOTAL COUNT
-    cursor.execute("SELECT COUNT(*) as total FROM scans WHERE user_id=%s", (user_id,))
+    # 🔢 total number of scans
+    cursor.execute(
+        "SELECT COUNT(*) AS total FROM scans WHERE user_id = %s",
+        (user_id,)
+    )
     total_scans = cursor.fetchone()['total']
 
-    # ✅ PAGINATED DATA
-    cursor.execute(
-        "SELECT tool_type, result, created_at FROM scans WHERE user_id=%s ORDER BY created_at DESC LIMIT %s OFFSET %s",
-        (user_id, per_page, offset)
-    )
+    # 📊 get paginated data
+    cursor.execute("""
+        SELECT tool_type, result, created_at
+        FROM scans
+        WHERE user_id = %s
+        ORDER BY created_at DESC
+        LIMIT %s OFFSET %s
+    """, (user_id, per_page, offset))
+
     scans = cursor.fetchall()
 
+    # 📘 calculate total pages
     total_pages = (total_scans + per_page - 1) // per_page
+
+    # 📍 calculate current showing range
+    start = offset + 1 if total_scans > 0 else 0
+    end = min(offset + per_page, total_scans)
+
+    cursor.close()
+    conn.close()
 
     return render_template(
         'history.html',
         scans=scans,
         page=page,
-        total_pages=total_pages
+        total_pages=total_pages,
+        total_scans=total_scans,
+        start=start,
+        end=end
     )
-
 
 # PHISHING
 @app.route('/phishing-detector', methods=['GET', 'POST'])

@@ -126,8 +126,8 @@ body {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
-    max-width: 1000px;
+    width: 95%;
+    max-width: 1200px;
     margin: 30px auto;
     margin-left: auto;
     margin-right: auto;
@@ -146,12 +146,12 @@ body {
 
 .modern-table th {
     background: #f1f3f5;
-    padding: 10px;
+    padding: 14px;
     text-align: center;
 }
 
 .modern-table td {
-    padding: 10px;
+    padding: 14px;
     border-top: 1px solid #ddd;
     text-align: center;
 }
@@ -532,4 +532,13 @@ body {
 .download-center {
     text-align: center;
     margin-top: 20px;
+}
+
+.page-info {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto 10px auto;
+    text-align: left;
+    font-size: 14px;
+    color: #2c3e50;
 }
