@@ -433,7 +433,9 @@ body {
 
 /* BACK BUTTON */
 .back-btn {
-    margin: 20px 0 10px 20px;   /* push below navbar */
+    margin-top: 60px;   /* increase this */
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .back-btn a {
@@ -498,6 +500,6 @@ body {
     display: block;
     text-align: left;
     width: 80%;
-    margin: 10px auto 5px auto;
+    margin: 20px auto 5px auto;
     font-weight: bold;
 }
