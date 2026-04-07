@@ -8,11 +8,16 @@ from utils.validators import is_valid_password, is_valid_url
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from flask import send_file
+from flask import send_from_directory
 import io
 import os
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 app.secret_key = "secret123"
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(os.path.join(app.root_path, 'static'), filename)
 
 # HOME
 @app.route('/')
