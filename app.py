@@ -12,12 +12,8 @@ from flask import send_from_directory
 import io
 import os
 
-app = Flask(__name__, static_folder='static', static_url_path='/static')
+app = Flask(__name__, static_folder='static')
 app.secret_key = "secret123"
-
-@app.route('/static/<path:filename>')
-def static_files(filename):
-    return send_from_directory(os.path.join(app.root_path, 'static'), filename)
 
 # HOME
 @app.route('/')
@@ -320,7 +316,9 @@ def vulnerability_scanner():
 # 404 ERROR (page not found)
 @app.errorhandler(404)
 def not_found(e):
-    return render_template('error.html', message="Page not found"), 404
+    if request.path.startswith('/static/'):
+        return e   # allow static files to work
+    return render_template("error.html")
 
 
 # 500 ERROR (server error)
