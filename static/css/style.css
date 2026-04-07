@@ -534,10 +534,12 @@ body {
 }
 
 .page-info {
-    width: 95%;
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto 10px auto;
+    padding: 0 40px;
     text-align: left;
+    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     font-size: 14px;
     color: #2c3e50;
 }
