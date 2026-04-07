@@ -399,6 +399,27 @@ def inject_user():
         'username': session.get('username', 'Guest')
     }
 
+@app.context_processor
+def inject_user():
+    user_id = session.get('user_id')
+
+    total_scans = 0
+
+    if user_id:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT COUNT(*) as total FROM scans WHERE user_id=%s", (user_id,))
+        result = cursor.fetchone()
+
+        total_scans = result['total'] if result else 0
+
+    return {
+        'is_guest': (user_id is None),
+        'username': session.get('username', 'Guest'),
+        'total_scans': total_scans
+    }
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

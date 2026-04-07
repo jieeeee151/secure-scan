@@ -13,7 +13,9 @@
     </div>
 
     <div class="nav-right">
-        <a href="/history" class="nav-link">Scan History</a>
+        {% if not is_guest %}
+            <span class="total-scan-nav">Total Scan: {{ total_scans }}</span>
+        {% endif %}
 
         <!-- 👤 PROFILE DROPDOWN -->
         <div class="profile-dropdown">
