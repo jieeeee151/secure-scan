@@ -110,6 +110,11 @@ body {
     margin-right: auto;
 }
 
+.activity-box h3 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
 .modern-table {
     width: 100%;
     border-collapse: collapse;
@@ -128,4 +133,14 @@ body {
 
 .modern-table tr:hover {
     background: #f9fbfd;
+}
+
+.history-link {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    color: #2d89ef;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
 }
