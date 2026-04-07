@@ -341,6 +341,7 @@ body {
 /* TITLE */
 .checker-title {
     margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 /* INPUT */
@@ -424,21 +425,21 @@ body {
 
 /* TITLE LINE */
 .title-line {
-    width: 60%;
-    height: 2px;
+    width: 90%;          /* longer */
+    height: 3px;         /* thicker (same top & bottom) */
     background: #2c3e50;
     margin: 10px auto;
 }
 
 /* BACK BUTTON */
 .back-btn {
-    text-align: left;
-    margin-bottom: 10px;
+    margin: 20px 0 10px 20px;   /* push below navbar */
 }
 
 .back-btn a {
     text-decoration: none;
     color: #2c3e50;
+    font-size: 14px;
 }
 
 /* COLOR SYSTEM */
@@ -491,4 +492,12 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.input-label {
+    display: block;
+    text-align: left;
+    width: 80%;
+    margin: 10px auto 5px auto;
+    font-weight: bold;
 }
