@@ -122,12 +122,11 @@ body {
 
 /* ACTIVITY */
 .activity-box {
-    margin-top: 60px;
+    margin-top: 30px;
     background: white;
-    padding: 20px;
+    padding: 0 40px;
     border-radius: 10px;
-    width: 95%;
-    max-width: 1200px;
+    width: 100%;
     margin: 30px auto;
     margin-left: auto;
     margin-right: auto;
