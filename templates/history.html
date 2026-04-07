@@ -1,37 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Scan History</title>
-    <link rel="icon" href="{{ url_for('static', filename='images/smalllogo.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Your Scan History</h2>
+{% block content %}
 
-<table border="1" align="center">
-    <tr>
-        <th>Tool</th>
-        <th>Result</th>
-        <th>Time</th>
-    </tr>
+<div class="checker-container">
 
-    {% for scan in scans %}
-    <tr>
-        <td>{{ scan.tool_type }}</td>
-        <td>{{ scan.result }}</td>
-        <td>{{ scan.created_at }}</td>
-    </tr>
-    {% endfor %}
+```
+<!-- 🔙 BACK -->
+<div class="back-btn">
+    <a href="/dashboard">← Back to Dashboard</a>
+</div>
 
-</table>
+<!-- 🔥 TITLE -->
+<div class="title-line"></div>
+<h2 class="checker-title">SCAN HISTORY</h2>
+<div class="title-line"></div>
 
-<a href="/download-history">
-    <button>Download Full History</button>
-</a>
+<!-- 📊 TABLE -->
+<div class="activity-box">
+    <table class="modern-table">
+        <tr>
+            <th>Date/Time</th>
+            <th>Tool</th>
+            <th>Result</th>
+        </tr>
 
-<br>
-<a href="/dashboard">Back to Dashboard</a>
+        {% for scan in scans %}
+        <tr>
+            <td>{{ scan.created_at }}</td>
+            <td>{{ scan.tool_type }}</td>
+            <td>{{ scan.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
-</body>
-</html>
+<!-- 🔄 PAGINATION -->
+<div class="pagination">
+
+    {% if page > 1 %}
+        <a href="/history?page={{ page-1 }}">« Prev</a>
+    {% endif %}
+
+    <span class="page-number">{{ page }}</span>
+
+    {% if page < total_pages %}
+        <a href="/history?page={{ page+1 }}">Next »</a>
+    {% endif %}
+
+</div>
+
+<!-- 📄 DOWNLOAD -->
+<div class="download-center">
+    <a href="/download-history">
+        <button class="download-btn">Download Full History</button>
+    </a>
+</div>
+```
+
+</div>
+
+{% endblock %}

@@ -503,3 +503,26 @@ body {
     margin: 20px auto 5px auto;
     font-weight: bold;
 }
+
+/* PAGINATION */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #2d89ef;
+    font-weight: bold;
+}
+
+.page-number {
+    font-weight: bold;
+}
+
+/* CENTER DOWNLOAD */
+.download-center {
+    text-align: center;
+    margin-top: 20px;
+}

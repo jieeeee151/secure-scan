@@ -195,13 +195,33 @@ def history():
 
     user_id = session['user_id']
 
+    # ✅ GET PAGE NUMBER
+    page = request.args.get('page', 1, type=int)
+    per_page = 15
+    offset = (page - 1) * per_page
+
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
-    cursor.execute("SELECT * FROM scans WHERE user_id=%s ORDER BY created_at DESC", (user_id,))
+    # ✅ TOTAL COUNT
+    cursor.execute("SELECT COUNT(*) as total FROM scans WHERE user_id=%s", (user_id,))
+    total_scans = cursor.fetchone()['total']
+
+    # ✅ PAGINATED DATA
+    cursor.execute(
+        "SELECT tool_type, result, created_at FROM scans WHERE user_id=%s ORDER BY created_at DESC LIMIT %s OFFSET %s",
+        (user_id, per_page, offset)
+    )
     scans = cursor.fetchall()
 
-    return render_template('history.html', scans=scans)
+    total_pages = (total_scans + per_page - 1) // per_page
+
+    return render_template(
+        'history.html',
+        scans=scans,
+        page=page,
+        total_pages=total_pages
+    )
 
 
 # PHISHING
