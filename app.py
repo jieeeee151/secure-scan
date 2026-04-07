@@ -8,8 +8,6 @@ from utils.validators import is_valid_password, is_valid_url
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from flask import send_file
-from flask import send_from_directory
-from flask import request, send_from_directory
 import io
 import os
 
@@ -317,12 +315,6 @@ def vulnerability_scanner():
 # 404 ERROR (page not found)
 @app.errorhandler(404)
 def not_found(e):
-    if request.path.startswith('/static/'):
-        static_folder = os.path.join(os.getcwd(), 'static')
-        file_path = request.path.replace('/static/', '')
-
-        return send_from_directory(static_folder, file_path)
-
     return render_template("error.html"), 404
 
 # 500 ERROR (server error)
