@@ -438,8 +438,9 @@ body {
 
 /* BACK BUTTON */
 .back-btn {
+    text-align: left;
     margin-top: 70px;   /* increase this */
-    margin-left: 10px;
+    margin-left: 60px;
     margin-bottom: 10px;
 }
 
