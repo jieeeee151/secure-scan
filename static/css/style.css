@@ -1,8 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     background-color: #dfe6ec;
+    overflow-x: hidden;
 }
 
 .login-body {
@@ -123,7 +128,7 @@ body {
 /* ACTIVITY */
 .activity-box {
     width: 100%;
-    padding: 0 60px;   /* same spacing as dashboard */
+    padding: 0 40px;   /* same spacing as dashboard */
     margin-top: 20px;
 }
 
