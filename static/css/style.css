@@ -219,3 +219,92 @@ body {
     font-size: 16px;
     color: #2c3e50;
 }
+
+/* LOGIN PAGE */
+.login-body {
+    background: linear-gradient(to bottom, #e9eef3, #dfe6ec);
+    font-family: Arial, sans-serif;
+}
+
+/* back button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+.back-btn a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+/* logo */
+.login-logo {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.login-logo img {
+    width: 120px;
+}
+
+/* container */
+.login-container {
+    width: 350px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* title */
+.login-container h2 {
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* inputs */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #4a6cf7, #6a5af9);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+/* register text */
+.register-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #4a6cf7;
+    text-decoration: none;
+}
