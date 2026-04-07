@@ -317,10 +317,12 @@ def vulnerability_scanner():
 # 404 ERROR (page not found)
 @app.errorhandler(404)
 def not_found(e):
-    # ✅ Allow static files to be served properly
     if request.path.startswith('/static/'):
-        return send_from_directory(os.path.join(app.root_path, 'static'),
-                                   request.path.replace('/static/', ''))
+        static_folder = os.path.join(os.getcwd(), 'static')
+        file_path = request.path.replace('/static/', '')
+
+        return send_from_directory(static_folder, file_path)
+
     return render_template("error.html"), 404
 
 # 500 ERROR (server error)
