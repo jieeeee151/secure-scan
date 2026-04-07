@@ -1,37 +1,130 @@
 body {
-    background-color: #0a0f1c;
-    color: #00ffcc;
+    margin: 0;
     font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e9eef3, #dfe6ec);
+    color: #2c3e50;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+.user-box {
+    background: #f1f3f5;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+/* MAIN */
+.container {
+    padding: 40px;
     text-align: center;
 }
 
-h1, h2, h3 {
-    color: #00ffcc;
+.welcome {
+    margin-bottom: 10px;
 }
 
-button {
-    background-color: transparent;
-    border: 2px solid #00ffcc;
-    color: #00ffcc;
+.total {
+    float: right;
+    margin-top: -40px;
+}
+
+/* TOOL CARDS */
+.tool-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.tool-card {
+    background: white;
+    padding: 25px;
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.tool-icon {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.tool-btn {
+    background: #2d89ef;
+    border: none;
+    color: white;
     padding: 10px 20px;
-    margin: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-button:hover {
-    background-color: #00ffcc;
-    color: #0a0f1c;
+.tool-btn:hover {
+    background: #1b5fbf;
 }
 
-input {
+/* ACTIVITY */
+.activity-box {
+    margin-top: 60px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.modern-table th {
+    background: #f1f3f5;
     padding: 10px;
-    margin: 10px;
-    border: 1px solid #00ffcc;
-    background-color: #0a0f1c;
-    color: #00ffcc;
 }
 
-a {
-    color: #00ffcc;
+.modern-table td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.modern-table tr:hover {
+    background: #f9fbfd;
 }
