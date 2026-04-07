@@ -214,7 +214,8 @@ body {
 }
 
 .total-scan-nav {
-    margin-right: 20px;
+    margin-right: 25px;
     font-weight: bold;
+    font-size: 16px;
     color: #2c3e50;
 }
