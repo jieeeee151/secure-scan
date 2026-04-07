@@ -14,6 +14,11 @@
 <h2 class="checker-title">SCAN HISTORY</h2>
 <div class="title-line"></div>
 
+<div class="page-info">
+    Page {{ page }} of {{ total_pages }} 
+    (Results {{ start }}–{{ end }} of {{ total_scans }})
+</div>
+
 <!-- 📊 TABLE -->
 <div class="activity-box">
     <table class="modern-table">
@@ -31,11 +36,6 @@
         </tr>
         {% endfor %}
     </table>
-</div>
-
-<div class="page-info">
-    Page {{ page }} of {{ total_pages }} 
-    (Results {{ start }}–{{ end }} of {{ total_scans }})
 </div>
 
 <!-- 🔄 PAGINATION -->
