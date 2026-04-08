@@ -632,3 +632,7 @@ body {
     background: #3498db;
     text-decoration: none; /* remove underline */
 }
+
+.download-btn:hover {
+    background: #3498dbb9;
+}
