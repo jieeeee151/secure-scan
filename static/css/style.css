@@ -508,7 +508,7 @@ body {
 .download-btn {
     margin-top: 10px;
     padding: 10px 20px;
-    background: #2d89ef;
+    background: #3498db;
     color: white;
     border: none;
     border-radius: 6px;
@@ -571,7 +571,7 @@ body {
 
 /* DELETE ALL BUTTON */
 .delete-all-btn {
-    background-color: #c0392b;
+    background-color: #e74c3c;
     border: none;
     color: white;
     padding: 10px 16px;
@@ -593,4 +593,13 @@ body {
 
 .history-table-wrapper {
     width: 100%;
+}
+
+.action-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    color: white;
 }
