@@ -10,6 +10,11 @@ html, body {
     overflow-x: hidden;
 }
 
+.full-width-table {
+    width: 95%;
+    margin: 0 auto;
+}
+
 .login-body {
     min-height: 100vh;
     display: flex;
@@ -135,6 +140,11 @@ body {
 .activity-box h3 {
     text-align: left;
     margin-bottom: 10px;
+}
+
+.active-page {
+    background: #2c3e50;
+    color: white;
 }
 
 .modern-table {
@@ -542,4 +552,45 @@ body {
     margin: 25px 0 5px 0;   /* more space from title, closer to table */
     text-align: left;
     font-size: 14px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* DELETE ALL BUTTON */
+.delete-all-btn {
+    background-color: #c0392b;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-all-btn:hover {
+    background-color: #922b21;
+}
+
+/* ACTION BUTTONS ALIGN */
+.history-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.history-table-wrapper {
+    width: 100%;
 }

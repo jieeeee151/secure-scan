@@ -430,6 +430,52 @@ def download_history():
 
     return send_file(buffer, as_attachment=True, download_name="history.pdf")
 
+@app.route('/delete-history/<int:id>', methods=['POST'])
+def delete_history(id):
+    # 🔒 Check login
+    if 'user_id' not in session:
+        return redirect('/login')
+
+    user_id = session['user_id']
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # 🔐 SECURE DELETE (only delete own data)
+    cursor.execute(
+        "DELETE FROM scans WHERE id = %s AND user_id = %s",
+        (id, user_id)
+    )
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/history')
+
+@app.route('/delete-all-history', methods=['POST'])
+def delete_all_history():
+    # 🔒 Check login
+    if 'user_id' not in session:
+        return redirect('/login')
+
+    user_id = session['user_id']
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # 🔐 Delete ONLY current user's history
+    cursor.execute(
+        "DELETE FROM scans WHERE user_id = %s",
+        (user_id,)
+    )
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect('/history')
+
 @app.context_processor
 def inject_user():
     return {
