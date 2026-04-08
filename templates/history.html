@@ -54,16 +54,15 @@
 
 <div class="history-actions">
 
-<a href="/download-history" class="download-btn">
-    Download Full History
-</a>
+    <a href="/download-history" class="action-btn download-btn">
+        Download Full History
+    </a>
 
-<form method="POST" action="/delete-all-history"
-      onsubmit="return confirm('Delete ALL history? This cannot be undo!')">
-    <button type="submit" class="action-btn delete-all-btn">
-        Delete All History
-    </button>
-</form>
+    <form method="POST" action="/delete-all-history" class="inline-form">
+        <button type="submit" class="action-btn delete-all-btn">
+            Delete All History
+        </button>
+    </form>
 
 </div>
 

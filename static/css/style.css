@@ -505,24 +505,8 @@ body {
     background: green;
 }
 
-/* DOWNLOAD BUTTON */
-.download-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #3498db;
-    text-decoration: none;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.action-btn,
-.download-btn {
-    display: inline-block;
-    padding: 10px 18px;
-    height: 42px;
-    line-height: 22px;
+.inline-form {
+    margin: 0;
 }
 
 .input-label {
@@ -593,7 +577,7 @@ body {
     background-color: #e74c3c;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 16px;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -606,7 +590,7 @@ body {
 .history-actions {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;   /* 🔥 THIS FIXES LEVEL */
     gap: 20px;
     margin-top: 20px;
 }
@@ -616,14 +600,17 @@ body {
 }
 
 .action-btn {
-    padding: 10px 18px;
+    display: flex;              /* 🔥 IMPORTANT */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    height: 44px;              /* 🔥 SAME HEIGHT */
     border-radius: 8px;
-    border: none;
-    color: white;
     font-size: 14px;
+    color: white;
+    border: none;
     cursor: pointer;
 }
-
 /* TOAST */
 #toast {
     position: fixed;
@@ -639,4 +626,9 @@ body {
 
 #toast.show {
     opacity: 1;
+}
+
+.download-btn {
+    background: #3498db;
+    text-decoration: none; /* remove underline */
 }
