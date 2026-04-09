@@ -637,36 +637,39 @@ body {
     background: #3498dbb9;
 }
 
-/* ERROR PAGE FULL SCREEN */
+/* FULL PAGE CENTER */
 .error-page {
     height: 100vh;
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #dfe6ec; /* same as your site */
-    overflow: hidden; /* 🚫 no scroll */
+    justify-content: center;   /* center horizontally */
+    align-items: center;       /* center vertically */
+    background: #dfe6ec;
+    overflow: hidden;
 }
 
-/* CENTER CONTENT */
+/* STACK IMAGE + BUTTON */
 .error-container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* IMAGE (NOT FULL SCREEN) */
+/* IMAGE FIX */
 .error-img {
-    width: 300px;   /* 🔥 control size here */
+    width: 350px;
     max-width: 80%;
+    display: block;
     margin-bottom: 20px;
 }
 
-/* BUTTON */
+/* BUTTON FIX */
 .error-btn {
     display: inline-block;
     padding: 12px 25px;
     background: #3498db;
     color: white;
-    text-decoration: none;
+    text-decoration: none;   /* ❌ remove underline */
     border-radius: 8px;
     font-size: 14px;
 }
