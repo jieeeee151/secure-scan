@@ -102,11 +102,9 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
     transition: 0.3s ease;
-
-    /* 🔥 FIX START */
     display: flex;
     flex-direction: column;
-    height: 420px;
+    min-height: 480px;
 }
 
 /* make text take space */
