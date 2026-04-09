@@ -636,3 +636,42 @@ body {
 .download-btn:hover {
     background: #3498dbb9;
 }
+
+/* ERROR PAGE FULL SCREEN */
+.error-page {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dfe6ec; /* same as your site */
+    overflow: hidden; /* 🚫 no scroll */
+}
+
+/* CENTER CONTENT */
+.error-container {
+    text-align: center;
+}
+
+/* IMAGE (NOT FULL SCREEN) */
+.error-img {
+    width: 300px;   /* 🔥 control size here */
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+.error-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* HOVER */
+.error-btn:hover {
+    background: #2c80b4;
+}

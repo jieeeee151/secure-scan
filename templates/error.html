@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>Error</title>
-    <link rel="icon" href="{{ url_for('static', filename='images/smalllogo.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
 
-<h2>⚠️ Something went wrong</h2>
+<body class="error-page">
 
-<p>{{ message }}</p>
+    <div class="error-container">
 
-<br>
-<a href="/">Go Home</a>
+        <!-- Image -->
+        <img src="{{ url_for('static', filename='images/404.png') }}" class="error-img">
+
+        <!-- Button -->
+        <a href="/" class="error-btn">Back to Dashboard</a>
+
+    </div>
 
 </body>
 </html>
