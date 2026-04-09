@@ -28,8 +28,12 @@
     </p>
 
     <div class="bar">
-        <div class="bar-fill {{ color }}-bar" style="width: 60%"></div>
-    </div>
+            {% if "Invalid" in result %}
+                <div class="bar-fill weak-bar" style="width: 100%"></div>
+            {% else %}
+                <div class="bar-fill {{ color }}-bar" style="width: 60%"></div>
+            {% endif %}
+        </div>
 
     {% if why %}
     <div class="why-box">
