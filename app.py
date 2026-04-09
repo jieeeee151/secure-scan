@@ -243,6 +243,8 @@ def phishing_detector():
     result = None
     why = None
     error = None
+    color = None
+    url = ""
 
     user_id = session.get('user_id')
 
@@ -256,6 +258,7 @@ def phishing_detector():
             error = "Invalid URL format"
 
         else:
+            # ✅ GUEST LIMIT
             if not user_id:
                 if 'guest_phishing_count' not in session:
                     session['guest_phishing_count'] = 0
@@ -269,6 +272,7 @@ def phishing_detector():
                     result = data['result']
                     why = data['why']
 
+            # ✅ LOGGED USER
             else:
                 data = detect_phishing(url)
                 result = data['result']
@@ -282,14 +286,26 @@ def phishing_detector():
                     (user_id, "phishing_detector", result)
                 )
                 conn.commit()
+                cursor.close()
+                conn.close()
+
+    # ✅ COLOR LOGIC
+    if result:
+        if "Safe" in result:
+            color = "green"
+        elif "Suspicious" in result:
+            color = "orange"
+        else:
+            color = "red"
 
     return render_template(
         'phishing_detector.html',
         result=result,
         why=why,
         error=error,
+        color=color,
         is_guest=(user_id is None),
-        last_input=url if request.method == 'POST' else ""
+        last_input=url
     )
 
 # VULNERABILITY
@@ -298,6 +314,8 @@ def vulnerability_scanner():
     result = None
     why = None
     error = None
+    color = None
+    url = ""
 
     user_id = session.get('user_id')
 
@@ -311,6 +329,7 @@ def vulnerability_scanner():
             error = "Invalid URL format"
 
         else:
+            # ✅ GUEST LIMIT
             if not user_id:
                 if 'guest_vuln_count' not in session:
                     session['guest_vuln_count'] = 0
@@ -324,6 +343,7 @@ def vulnerability_scanner():
                     result = data['result']
                     why = data['why']
 
+            # ✅ LOGGED USER
             else:
                 data = scan_vulnerabilities(url)
                 result = data['result']
@@ -337,14 +357,26 @@ def vulnerability_scanner():
                     (user_id, "vulnerability_scanner", result)
                 )
                 conn.commit()
+                cursor.close()
+                conn.close()
+
+    # ✅ COLOR LOGIC
+    if result:
+        if "Low" in result:
+            color = "green"
+        elif "Medium" in result:
+            color = "orange"
+        else:
+            color = "red"
 
     return render_template(
         'vulnerability_scanner.html',
         result=result,
         why=why,
         error=error,
+        color=color,
         is_guest=(user_id is None),
-        last_input=url if request.method == 'POST' else ""
+        last_input=url
     )
 
 # 404 ERROR
@@ -366,10 +398,10 @@ def download_report():
     if 'user_id' not in session:
         return "Please login to download report ❌"
 
-    tool = request.args.get('tool')
-    input_data = request.args.get('input')
-    result = request.args.get('result')
-    explanation = request.args.get('why')
+    tool = request.args.get('tool', 'N/A')
+    input_data = request.args.get('input', 'N/A')
+    result = request.args.get('result', 'N/A')
+    explanation = request.args.get('why', '')
 
     buffer = io.BytesIO()
     doc = SimpleDocTemplate(buffer)

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Error</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body class="error-page">
@@ -15,10 +15,9 @@
             <img src="{{ url_for('static', filename='images/500.png') }}" class="error-img">
         {% endif %}
 
-        <a href="/" class="error-btn">Back to Dashboard</a>
+        <a href="/dashboard" class="error-btn">Back to Dashboard</a>
 
     </div>
 
 </body>
 </html>
-

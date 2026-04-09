@@ -102,6 +102,14 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
     transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 420px; /* force same height */
+}
+
+.tool-card p {
+    flex-grow: 1;
 }
 
 .tool-card:hover {
@@ -121,7 +129,7 @@ body {
     border: none;
     color: white;
     padding: 10px 20px;
-    margin-top: 15px;
+    margin-top: auto;
     border-radius: 5px;
     cursor: pointer;
 }

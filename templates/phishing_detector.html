@@ -30,10 +30,26 @@
         <div class="bar-fill {{ color }}-bar" style="width: 60%"></div>
     </div>
 
-    <button onclick="downloadReport()" class="download-btn">Download Report</button>
+    <div class="why-box">
+        <strong>Why This Matters:</strong>
+        <p>{{ why }}</p>
+    </div>
+
+    <button onclick="downloadReport()" class="main-btn">Download Report</button>
 </div>
 {% endif %}
 
 </div>
+
+<script>
+function downloadReport() {
+    const result = "{{ result }}";
+    const why = "{{ why }}";
+    const input = document.querySelector("input").value;
+    const tool = "{{ request.path }}";
+
+    window.location.href = `/download-report?tool=${tool}&input=${input}&result=${result}&why=${why}`;
+}
+</script>
 
 {% endblock %}
