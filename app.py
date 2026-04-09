@@ -144,7 +144,11 @@ def password_checker():
                     session['guest_password_count'] = 0
 
                 if session['guest_password_count'] >= 5:
-                    error = "Guest scan limit reached (5). Please register."
+                    return render_template(
+                        'password_checker.html',
+                        error="LIMIT_REACHED",
+                        is_guest=True
+                    )
                 else:
                     session['guest_password_count'] += 1
 
@@ -255,7 +259,8 @@ def phishing_detector():
             error = "Please enter a URL"
 
         elif not is_valid_url(url):
-            error = "Invalid URL format"
+            result = "Invalid URL ❌"
+            why = "The URL format is incorrect. Please enter a valid website address."
 
         else:
             # ✅ GUEST LIMIT
@@ -263,8 +268,12 @@ def phishing_detector():
                 if 'guest_phishing_count' not in session:
                     session['guest_phishing_count'] = 0
 
-                if session['guest_phishing_count'] >= 5:
-                    error = "Guest limit reached (5). Please register."
+                if session['guest_password_count'] >= 5:
+                    return render_template(
+                        'password_checker.html',
+                        error="LIMIT_REACHED",
+                        is_guest=True
+                    )
                 else:
                     session['guest_phishing_count'] += 1
 
@@ -295,6 +304,8 @@ def phishing_detector():
             color = "green"
         elif "Suspicious" in result:
             color = "orange"
+        elif "Invalid" in result:
+            color = "red"
         else:
             color = "red"
 
@@ -326,7 +337,8 @@ def vulnerability_scanner():
             error = "Please enter a URL"
 
         elif not is_valid_url(url):
-            error = "Invalid URL format"
+            result = "Invalid URL ❌"
+            why = "The URL format is incorrect. Please enter a valid website address."
 
         else:
             # ✅ GUEST LIMIT
@@ -334,8 +346,12 @@ def vulnerability_scanner():
                 if 'guest_vuln_count' not in session:
                     session['guest_vuln_count'] = 0
 
-                if session['guest_vuln_count'] >= 5:
-                    error = "Guest limit reached (5). Please register."
+                if session['guest_password_count'] >= 5:
+                    return render_template(
+                        'password_checker.html',
+                        error="LIMIT_REACHED",
+                        is_guest=True
+                    )
                 else:
                     session['guest_vuln_count'] += 1
 
@@ -366,6 +382,8 @@ def vulnerability_scanner():
             color = "green"
         elif "Medium" in result:
             color = "orange"
+        elif "Invalid" in result:
+            color = "red"
         else:
             color = "red"
 

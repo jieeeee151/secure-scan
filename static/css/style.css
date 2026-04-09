@@ -102,36 +102,45 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
     transition: 0.3s ease;
+
+    /* 🔥 FIX START */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 420px; /* force same height */
+    height: 420px;
 }
 
+/* make text take space */
 .tool-card p {
     flex-grow: 1;
 }
 
+/* 🔥 IMPORTANT: push button down */
+.tool-card a {
+    margin-top: auto;
+}
+
+/* hover keep same */
 .tool-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .tool-icon {
-    width: 250px;   /* increase from 60 → 90 */
+    width: 250px;
     height: 250px;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
+/* 🔥 FULL WIDTH BUTTON */
 .tool-btn {
     background: #2d89ef;
     border: none;
     color: white;
     padding: 10px 20px;
-    margin-top: auto;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
 }
 
 .tool-btn:hover {
