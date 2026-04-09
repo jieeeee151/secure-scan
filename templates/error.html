@@ -9,7 +9,11 @@
 
     <div class="error-container">
 
-        <img src="{{ url_for('static', filename='images/404.png') }}" class="error-img">
+        {% if error_code == 404 %}
+            <img src="{{ url_for('static', filename='images/404.png') }}" class="error-img">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/500.png') }}" class="error-img">
+        {% endif %}
 
         <a href="/" class="error-btn">Back to Dashboard</a>
 

@@ -347,15 +347,16 @@ def vulnerability_scanner():
         last_input=url if request.method == 'POST' else ""
     )
 
-# 404 ERROR (page not found)
+# 404 ERROR
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("error.html"), 404
+    return render_template("error.html", error_code=404), 404
 
-# 500 ERROR (server error)
+
+# 500 ERROR
 @app.errorhandler(500)
 def server_error(e):
-    return render_template('error.html', message="Internal server error"), 500
+    return render_template("error.html", error_code=500), 500
 
 # REPORT Download
 @app.route('/download-report')
