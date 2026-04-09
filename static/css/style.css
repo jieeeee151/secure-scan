@@ -407,8 +407,7 @@ body {
 
 .bar-fill {
     height: 10px;
-    background: green;
-    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
 }
 
 /* WHY BOX */

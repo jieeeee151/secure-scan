@@ -301,11 +301,11 @@ def phishing_detector():
     # ✅ COLOR LOGIC
     if result:
         if "Safe" in result:
-            color = "green"
+            color = "strong"
         elif "Suspicious" in result:
-            color = "orange"
+            color = "medium"
         elif "Invalid" in result:
-            color = "red"
+            color = "weak"
         else:
             color = "red"
 
