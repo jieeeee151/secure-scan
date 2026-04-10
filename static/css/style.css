@@ -157,7 +157,7 @@ body {
     margin-bottom: 10px;
 }
 
-.active-page {
+.page-btn.active-page {
     background: #2d89ef;
     color: white;
 
