@@ -260,6 +260,7 @@ body {
 .tools-dropdown {
     position: relative;
     display: inline-block;
+    padding: 0;
 }
 
 .tools-menu {
