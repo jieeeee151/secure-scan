@@ -191,6 +191,10 @@ def password_checker():
         last_input=password
     )
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 # HISTORY
 @app.route('/history')
 def history():
