@@ -266,13 +266,16 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
+
     background: white;
 
-    min-width: fit-content; /* 🔥 auto width */
-    padding: 5px 0;
+    min-width: fit-content;
+    padding: 0; /* 🔥 REMOVE INNER SPACE */
 
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    overflow: hidden; /* 🔥 IMPORTANT (fix grey strip) */
 
     opacity: 0;
     visibility: hidden;
@@ -290,7 +293,7 @@ body {
 /* items */
 .tools-menu a {
     display: block;
-    padding: 10px 15px;
+    padding: 14px 20px;
     white-space: nowrap; /* 🔥 force 1 line */
     color: #2c3e50;
     text-decoration: none;
