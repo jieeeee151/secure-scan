@@ -266,34 +266,30 @@ body {
 .tools-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+
+    left: 50%; /* 🔥 CENTER FIX */
+    transform: translateX(-50%) translateY(-5px); /* 🔥 CENTER ALIGN */
 
     background: white;
 
-    min-width: fit-content;
-    padding: 0; /* 🔥 REMOVE INNER SPACE */
+    min-width: max-content;
+    padding: 0;
 
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 
-    overflow: hidden; /* 🔥 IMPORTANT (fix grey strip) */
+    overflow: hidden;
 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-5px);
     transition: 0.2s ease;
-
-    left: 0;
-    right: auto;
-
-    margin-left: 0;
 }
 
 /* show */
 .tools-dropdown:hover .tools-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 
 /* items */
