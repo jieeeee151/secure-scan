@@ -2,6 +2,10 @@
 
 {% block content %}
 
+<div class="back-btn">
+    <a href="/dashboard">← Back to Dashboard</a>
+</div>
+
 <!-- TITLE -->
 <div class="title-container">
     <div class="title-line"></div>
@@ -12,8 +16,15 @@
 <!-- INTRO -->
 <div class="about-intro">
     <p>
-        SecureScan is a web-based cybersecurity toolkit designed to help users
-        analyze password strength, detect phishing links, and identify potential vulnerabilities.
+        SecureScan is a web-based cybersecurity toolkit designed to help users strengthen their digital security 
+        and stay protected in an increasingly complex online environment. With the rapid growth of cyber threats, 
+        individuals and organizations face risks such as weak passwords, phishing attacks, and system vulnerabilities.
+    </p>
+
+    <p>
+        Our platform provides simple yet powerful tools that allow users to analyze password strength, detect suspicious 
+        or malicious links, and identify potential weaknesses in websites. By offering clear results and easy-to-understand 
+        explanations, SecureScan helps users make informed decisions and take proactive steps to protect their data.
     </p>
 </div>
 
@@ -24,21 +35,30 @@
     <div class="about-text">
         <h3>Vulnerability Scan</h3>
         <p>
-            Identify security weaknesses in websites and detect potential risks
-            before attackers can exploit them.
+            The Vulnerability Scan tool is designed to identify potential security weaknesses in websites and systems. 
+            It analyzes different aspects of a website to detect missing protections, outdated configurations, or 
+            possible entry points that attackers could exploit.
+        </p>
+        <p>
+            By using this tool, users can gain insights into how secure a website is and understand the risks involved. 
+            This allows developers and users alike to take preventive measures before any serious security breach occurs.
         </p>
     </div>
 </div>
 
-<!-- SECTION 2 (reverse) -->
+<!-- SECTION 2 -->
 <div class="about-row reverse">
     <img src="{{ url_for('static', filename='images/password.png') }}" class="about-img">
 
     <div class="about-text">
         <h3>Password Checker</h3>
         <p>
-            Analyze password strength and ensure secure authentication to
-            prevent unauthorized access.
+            The Password Checker helps users evaluate the strength and reliability of their passwords. It examines 
+            factors such as length, complexity, and predictability to determine whether a password is secure or vulnerable.
+        </p>
+        <p>
+            Weak passwords are one of the most common causes of security breaches. This tool encourages users to create 
+            stronger passwords by providing feedback and highlighting potential weaknesses, helping to prevent unauthorized access.
         </p>
     </div>
 </div>
@@ -50,8 +70,14 @@
     <div class="about-text">
         <h3>Phishing Detection</h3>
         <p>
-            Detect phishing links and suspicious URLs to protect users from
-            malicious attacks and scams.
+            The Phishing Detection tool is designed to identify suspicious or malicious URLs that may attempt to trick users 
+            into revealing sensitive information. It analyzes the structure and characteristics of a website link to determine 
+            whether it is safe or potentially harmful.
+        </p>
+        <p>
+            Phishing attacks are becoming increasingly sophisticated, making it difficult for users to distinguish between 
+            legitimate and fake websites. This tool provides an additional layer of protection by helping users recognize 
+            threats before interacting with them.
         </p>
     </div>
 </div>
