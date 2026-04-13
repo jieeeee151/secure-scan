@@ -281,6 +281,11 @@ body {
     visibility: hidden;
     transform: translateY(-5px);
     transition: 0.2s ease;
+
+    left: 0;
+    right: auto;
+
+    margin-left: 0;
 }
 
 /* show */
@@ -293,7 +298,9 @@ body {
 /* items */
 .tools-menu a {
     display: block;
+    width: 100%;
     padding: 14px 20px;
+    box-sizing: border-box;
     white-space: nowrap; /* 🔥 force 1 line */
     color: #2c3e50;
     text-decoration: none;
