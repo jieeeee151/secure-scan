@@ -11,18 +11,37 @@
 
 <!-- NAVBAR -->
 <div class="navbar">
+
+    <!-- LEFT -->
     <div class="nav-left">
         <a href="/dashboard">
             <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
         </a>
+
+        <!-- 🔥 NEW MENU -->
+        <a href="/dashboard" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About Us</a>
+
+        <!-- TOOLS DROPDOWN -->
+        <div class="profile-dropdown">
+            <span class="nav-link">Tools ▾</span>
+
+            <div class="dropdown-menu">
+                <a href="/password-checker">Password Checker</a>
+                <a href="/phishing-detector">Phishing Detection</a>
+                <a href="/vulnerability-scanner">Vulnerability Scan</a>
+            </div>
+        </div>
     </div>
 
+    <!-- RIGHT -->
     <div class="nav-right">
+
         {% if not is_guest %}
             <span class="total-scan-nav">Total Scan: {{ total_scans }}</span>
         {% endif %}
 
-        <!-- 👤 PROFILE DROPDOWN -->
+        <!-- 👤 PROFILE -->
         <div class="profile-dropdown">
             <div class="user-box">
                 👤 {{ username if username else 'Guest' }}
@@ -36,12 +55,49 @@
                     <a href="/logout">Logout</a>
                 {% endif %}
             </div>
+        </div>
+
     </div>
-</div>
+
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="container">
     {% block content %}{% endblock %}
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>SecureScan</h3>
+            <p>
+                A cybersecurity toolkit that helps users detect threats,
+                analyze risks, and improve online safety.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="/dashboard">Home</a>
+            <a href="/about">About Us</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Tools</h4>
+            <a href="/password-checker">Password Checker</a>
+            <a href="/phishing-detector">Phishing Detection</a>
+            <a href="/vulnerability-scanner">Vulnerability Scan</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 SecureScan. All rights reserved.
+    </div>
+
 </div>
 
 </body>

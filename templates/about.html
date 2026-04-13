@@ -1,23 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>About</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>About SecureScan</h2>
+{% block content %}
 
-<p>
-SecureScan is a web-based cybersecurity toolkit designed to help users analyze password strength,
-detect phishing links, and identify potential vulnerabilities.
-</p>
+<!-- TITLE -->
+<div class="title-container">
+    <div class="title-line"></div>
+    <h1 class="checker-title">ABOUT US</h1>
+    <div class="title-line"></div>
+</div>
 
-<p>
-The system aims to improve cybersecurity awareness through interactive tools and real-time feedback.
-</p>
+<!-- INTRO -->
+<div class="about-intro">
+    <p>
+        SecureScan is a web-based cybersecurity toolkit designed to help users
+        analyze password strength, detect phishing links, and identify potential vulnerabilities.
+    </p>
+</div>
 
-<a href="/">Back to Home</a>
+<!-- SECTION 1 -->
+<div class="about-row">
+    <img src="{{ url_for('static', filename='images/vulnerability.png') }}" class="about-img">
 
-</body>
-</html>
+    <div class="about-text">
+        <h3>Vulnerability Scan</h3>
+        <p>
+            Identify security weaknesses in websites and detect potential risks
+            before attackers can exploit them.
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 2 (reverse) -->
+<div class="about-row reverse">
+    <img src="{{ url_for('static', filename='images/password.png') }}" class="about-img">
+
+    <div class="about-text">
+        <h3>Password Protection</h3>
+        <p>
+            Analyze password strength and ensure secure authentication to
+            prevent unauthorized access.
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="about-row">
+    <img src="{{ url_for('static', filename='images/phishing.png') }}" class="about-img">
+
+    <div class="about-text">
+        <h3>Threat Detection</h3>
+        <p>
+            Detect phishing links and suspicious URLs to protect users from
+            malicious attacks and scams.
+        </p>
+    </div>
+</div>
+
+{% endblock %}
