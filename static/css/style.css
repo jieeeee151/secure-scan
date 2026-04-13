@@ -93,7 +93,8 @@ body {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 .tool-card {
@@ -759,19 +760,26 @@ body {
 
 /* ABOUT PAGE */
 .about-intro {
-    width: 70%;
-    margin: 20px auto;
+    width: 65%;
+    margin: 30px auto;
     text-align: center;
-    font-size: 16px;
+    font-size: 17px;   /* 🔥 bigger */
+    line-height: 1.7;  /* 🔥 more readable */
 }
 
 .about-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
-    margin: 40px auto;
-    width: 80%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 40px;
+    gap: 60px;
+    margin: 60px auto;
+    width: 75%;
+}
+
+.about-row:last-child {
+    border-bottom: none;
 }
 
 .about-row.reverse {
@@ -783,23 +791,30 @@ body {
 }
 
 .about-text {
-    max-width: 400px;
+    max-width: 450px;
     text-align: left;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.about-text h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 /* FOOTER */
 .footer {
     background: #ffffff; /* 🔥 white like header */
     color: #2c3e50;
-    margin-top: 60px;
-    padding: 40px 20px;
+    margin-top: 40px;
+    padding: 25px 20px;
     border-top: 1px solid #ccc;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .footer-col {
@@ -815,15 +830,19 @@ body {
     display: block;
     color: #2c3e50;
     text-decoration: none;
-    margin: 5px 0;
+    margin: 8px 0;
 }
 
 .footer-col a:hover {
     text-decoration: underline;
 }
 
+.footer-col h4 {
+    margin-bottom: 8px;
+}
+
 .footer-bottom {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
     font-size: 14px;
 }
