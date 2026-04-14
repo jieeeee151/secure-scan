@@ -83,7 +83,7 @@ def login():
         password = request.form['password']
 
         conn = get_db_connection()
-        cursor = conn.cursor(dictionary=True)
+        cursor = conn.cursor(dictionary=True, buffered=True)
 
         # 🔥 get ALL users with same username
         cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
@@ -118,7 +118,7 @@ def forget_password():
 
         try:
             conn = get_db_connection()
-            cursor = conn.cursor(dictionary=True)  # ✅ keep consistent
+            cursor = conn.cursor(dictionary=True, buffered=True)  # ✅ FIX HERE
 
             cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
             user = cursor.fetchone()
@@ -145,7 +145,7 @@ def forget_password():
                 )
 
         except Exception as e:
-            return f"ERROR: {str(e)}"   # 🔥 SHOW REAL ERROR
+            return f"ERROR: {str(e)}"
 
     return render_template("forget_password.html")
 
@@ -155,7 +155,7 @@ def dashboard():
     user_id = session.get('user_id')
 
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor(dictionary=True, buffered=True)
 
     # ✅ Guest user
     if not user_id:
@@ -209,7 +209,7 @@ def password_checker():
     user_id = session.get('user_id')
 
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor(dictionary=True, buffered=True)
 
     if request.method == 'POST':
         password = request.form['password']
@@ -289,7 +289,7 @@ def history():
     offset = (page - 1) * per_page
 
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor(dictionary=True, buffered=True)
 
     # total count
     cursor.execute(
@@ -576,7 +576,7 @@ def download_history():
         return "Please login ❌"
 
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor(dictionary=True, buffered=True)
 
     user_id = session.get('user_id')
     username = session.get('username', 'User')
@@ -717,7 +717,7 @@ def inject_user():
 
     if user_id:
         conn = get_db_connection()
-        cursor = conn.cursor(dictionary=True)
+        cursor = conn.cursor(dictionary=True, buffered=True)
 
         cursor.execute("SELECT COUNT(*) as total FROM scans WHERE user_id=%s", (user_id,))
         result = cursor.fetchone()
