@@ -117,7 +117,7 @@ def forget_password():
         new_password = request.form['password']
 
         conn = get_db_connection()
-        cursor = conn.cursor(dictionary=True)
+        cursor = conn.cursor()  # ✅ FIXED
 
         cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
         user = cursor.fetchone()
@@ -349,9 +349,9 @@ def phishing_detector():
                 if 'guest_phishing_count' not in session:
                     session['guest_phishing_count'] = 0
 
-                if session['guest_password_count'] >= 5:
+                if session['guest_phishing_count'] >= 5:
                     return render_template(
-                        'password_checker.html',
+                        'phishing_detector.html',
                         error="LIMIT_REACHED",
                         is_guest=True
                     )
@@ -427,9 +427,9 @@ def vulnerability_scanner():
                 if 'guest_vuln_count' not in session:
                     session['guest_vuln_count'] = 0
 
-                if session['guest_password_count'] >= 5:
+                if session['guest_vuln_count'] >= 5:
                     return render_template(
-                        'password_checker.html',
+                        'vulnerability_scanner.html',
                         error="LIMIT_REACHED",
                         is_guest=True
                     )
@@ -704,13 +704,6 @@ def delete_all_history():
     conn.close()
 
     return redirect('/history')
-
-@app.context_processor
-def inject_user():
-    return {
-        'is_guest': ('user_id' not in session),
-        'username': session.get('username', 'Guest')
-    }
 
 @app.context_processor
 def inject_user():
