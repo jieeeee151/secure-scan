@@ -68,8 +68,8 @@ def login():
             session['username'] = user['username']
             return redirect('/dashboard')
         else:
-            return "Invalid login ❌"
-
+            return render_template("login.html", error="Invalid login ❌")
+        
     return render_template('login.html')
 
 
