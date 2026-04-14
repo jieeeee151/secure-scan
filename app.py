@@ -119,7 +119,6 @@ def forget_password():
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
 
-        # 🔥 check email
         cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
         user = cursor.fetchone()
 
