@@ -37,7 +37,18 @@ def register():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # 🔥 CHECK: SAME username + SAME email ONLY
+        # 🔥 CHECK: email already exists (MAIN FIX)
+        cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
+        email_exist = cursor.fetchone()
+
+        if email_exist:
+            conn.close()
+            return render_template(
+                'register.html',
+                error="Email already registered. Please login ❌"
+            )
+
+        # 🔥 OPTIONAL SAFETY (same username + same email)
         cursor.execute(
             "SELECT * FROM users WHERE username=%s AND email=%s",
             (username, email)
@@ -51,7 +62,7 @@ def register():
                 error="Account already exists. Please login ❌"
             )
 
-        # ✅ ALLOW register
+        # ✅ INSERT USER
         cursor.execute(
             "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
             (username, email, hashed_password)

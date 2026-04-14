@@ -46,5 +46,14 @@
 
 </div>
 
+{% if error %}
+<div class="popup-overlay">
+    <div class="popup-box">
+        <p>{{ error }}</p>
+        <button onclick="this.parentElement.parentElement.style.display='none'">OK</button>
+    </div>
+</div>
+{% endif %}
+
 </body>
 </html>
