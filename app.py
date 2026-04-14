@@ -116,32 +116,36 @@ def forget_password():
         email = request.form['email']
         new_password = request.form['password']
 
-        conn = get_db_connection()
-        cursor = conn.cursor()  # ✅ FIXED
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor(dictionary=True)  # ✅ keep consistent
 
-        cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
-        user = cursor.fetchone()
+            cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
+            user = cursor.fetchone()
 
-        if user:
-            hashed_password = generate_password_hash(new_password)
+            if user:
+                hashed_password = generate_password_hash(new_password)
 
-            cursor.execute(
-                "UPDATE users SET password=%s WHERE email=%s",
-                (hashed_password, email)
-            )
-            conn.commit()
-            conn.close()
+                cursor.execute(
+                    "UPDATE users SET password=%s WHERE email=%s",
+                    (hashed_password, email)
+                )
+                conn.commit()
+                conn.close()
 
-            return render_template(
-                "forget_password.html",
-                success="Password updated successfully ✅"
-            )
-        else:
-            conn.close()
-            return render_template(
-                "forget_password.html",
-                error="Email not found ❌"
-            )
+                return render_template(
+                    "forget_password.html",
+                    success="Password updated successfully ✅"
+                )
+            else:
+                conn.close()
+                return render_template(
+                    "forget_password.html",
+                    error="Email not found ❌"
+                )
+
+        except Exception as e:
+            return f"ERROR: {str(e)}"   # 🔥 SHOW REAL ERROR
 
     return render_template("forget_password.html")
 
