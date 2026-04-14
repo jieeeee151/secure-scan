@@ -32,21 +32,37 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
-        hashed_password = generate_password_hash(password)  # ✅ correct
+        hashed_password = generate_password_hash(password)
 
         conn = get_db_connection()
         cursor = conn.cursor()
 
+        # 🔥 CHECK: SAME username + SAME email ONLY
+        cursor.execute(
+            "SELECT * FROM users WHERE username=%s AND email=%s",
+            (username, email)
+        )
+        existing = cursor.fetchone()
+
+        if existing:
+            conn.close()
+            return render_template(
+                'register.html',
+                error="Account already exists. Please login ❌"
+            )
+
+        # ✅ ALLOW register
         cursor.execute(
             "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
-            (username, email, hashed_password)  # ✅ FIXED
+            (username, email, hashed_password)
         )
+
         conn.commit()
+        conn.close()
 
         return redirect('/login')
 
     return render_template('register.html')
-
 
 # LOGIN
 @app.route('/login', methods=['GET', 'POST'])
@@ -58,20 +74,66 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
 
-        # ✅ get user first
+        # 🔥 get ALL users with same username
         cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
-        user = cursor.fetchone()
+        users = cursor.fetchall()
 
-        # ✅ check hash
-        if user and check_password_hash(user['password'], password):
-            session['user_id'] = user['id']
-            session['username'] = user['username']
+        valid_user = None
+
+        # 🔥 check each hashed password
+        for u in users:
+            if check_password_hash(u['password'], password):
+                valid_user = u
+                break
+
+        conn.close()
+
+        if valid_user:
+            session['user_id'] = valid_user['id']
+            session['username'] = valid_user['username']
             return redirect('/dashboard')
         else:
-            return render_template("login.html", error="Invalid login ❌")
-        
+            return render_template("login.html", error="Invalid username or password ❌")
+
     return render_template('login.html')
 
+#FORGET PASSWORD
+@app.route('/forget-password', methods=['GET', 'POST'])
+def forget_password():
+
+    if request.method == 'POST':
+        email = request.form['email']
+        new_password = request.form['password']
+
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        # 🔥 check email
+        cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
+        user = cursor.fetchone()
+
+        if user:
+            hashed_password = generate_password_hash(new_password)
+
+            cursor.execute(
+                "UPDATE users SET password=%s WHERE email=%s",
+                (hashed_password, email)
+            )
+            conn.commit()
+            conn.close()
+
+            return render_template(
+                "forget_password.html",
+                success="Password updated successfully ✅"
+            )
+        else:
+            conn.close()
+            return render_template(
+                "forget_password.html",
+                error="Email not found ❌"
+            )
+
+    return render_template("forget_password.html")
 
 # DASHBOARD
 @app.route('/dashboard')

@@ -1,53 +1,61 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Login</title>
     <link rel="icon" href="{{ url_for('static', filename='images/smalllogo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body class="login-body">
 
 <!-- 🔙 Back -->
-
 <div class="back-btn">
     <a href="/dashboard">← Back to Dashboard</a>
 </div>
 
 <!-- 🔐 LOGO -->
-
 <div class="login-logo">
     <img src="{{ url_for('static', filename='images/logo.png') }}">
 </div>
 
 <!-- 📦 LOGIN CARD -->
-
 <div class="login-container">
 
-<h2>Sign In</h2>
-<p class="subtitle">Enter your credentials to access your account</p>
+    <h2>Sign In</h2>
+    <p class="subtitle">Enter your credentials to access your account</p>
 
-<form method="POST">
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" class="login-btn">Sign In</button>
+    </form>
 
-    <input type="text" name="username" placeholder="Username" required>
+    <p class="register-text">
+        Don’t have an account?
+        <a href="/register">Create one</a>
+    </p>
 
-    <input type="password" name="password" placeholder="Password" required>
-
-    <button type="submit" class="login-btn">Sign In</button>
-
-</form>
-
-<p class="register-text">
-    Don’t have an account?
-    <a href="/register">Create one</a>
-</p>
+    <!-- 🔥 FORGET PASSWORD -->
+    <p class="register-text">
+        <a href="/forget-password">Forgot password?</a>
+    </p>
 
 </div>
 
-<script>
+<!-- 🔥 CUSTOM POPUP -->
 {% if error %}
-    alert("{{ error }}");
+<div id="popup" class="popup-overlay">
+    <div class="popup-box">
+        <p>{{ error }}</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
 {% endif %}
+
+<script>
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
 </script>
 
 </body>
