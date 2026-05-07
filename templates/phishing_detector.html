@@ -55,19 +55,52 @@
 
 <script>
 function downloadReport() {
+
+    // 🔥 guest block
+    const isGuest = "{{ is_guest }}";
+
+    if (isGuest === "True") {
+        showPopup("Please login to download report ❌");
+        return;
+    }
+
     const result = "{{ result }}";
     const why = "{{ why }}";
-    const input = document.querySelector("input").value;
+
+    // ✅ FIXED
+    const input = document.querySelector('input[name="url"]').value;
+
     const tool = "Phishing Detector";
 
-    window.location.href = `/download-report?tool=${tool}&input=${input}&result=${result}&why=${why}`;
+    window.location.href =
+        `/download-report?tool=${tool}&input=${input}&result=${result}&why=${why}`;
 }
 
 // 🔥 guest limit popup
 {% if error == "LIMIT_REACHED" %}
-    alert("Guest limit reached (5 scans). Please login or register.");
-    window.location.href = "/login";
+    showPopup("Guest limit reached (5 scans). Please login or register.");
+    setTimeout(() => {
+        window.location.href = "/login";
+    }, 2000);
 {% endif %}
+
+// 🔥 popup functions
+function showPopup(message) {
+    document.getElementById("popupMessage").innerText = message;
+    document.getElementById("customPopup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("customPopup").style.display = "none";
+}
 </script>
+
+<!-- POPUP -->
+<div id="customPopup" class="popup-overlay" style="display:none;">
+    <div class="popup-box">
+        <p id="popupMessage"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
 
 {% endblock %}
